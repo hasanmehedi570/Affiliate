@@ -1,0 +1,11 @@
+<h3 class="mb-5">Leave a comment</h3>
+<form
+  action="{% url 'blog:post_comment' post.id %}"
+  method="post"
+  class="p-5 bg-light"
+>
+  {{form.as_p}} {%csrf_token%}
+  <div class="form-group">
+    <input type="submit" value="Post Comment" class="btn btn-primary" />
+  </div>
+</form>

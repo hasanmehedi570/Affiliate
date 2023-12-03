@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% load static %}{%load blog_tags%}{%block title%}
+Recipes {%endblock%} {% block content %}
+<section class="section bg-light">
+  <div class="container">
+    <div class="row align-items-stretch retro-layout">
+      <br /><br /><br /><br />
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Categories
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{%url 'blog:recipe_list' %}">All</a>
+          {%for category in re_categories%}
+          <a class="dropdown-item" href="{{category.get_absolute_url}}"
+            >{{category.name}}</a
+          >
+          {%endfor%}
+        </div>
+      </div>
+      {%if tag%}
+      <h3>Recipe tagged with "{{tag.name}}"<br /><br /></h3>
+      {%endif%} {%for recipe in recipes%}
+      <div class="col-md-4">
+        <a
+          href="{{recipe.get_absolute_url}}"
+          class="h-entry mb-30 v-height gradient"
+        >
+          <div
+            class="featured-img"
+            {%
+            if
+            image
+            %}
+            style="background-image: url('{{recipe.image.url}}')"
+            {%
+            endif
+            %}
+          ></div>
+
+          <div class="text">
+            <h2>{{recipe.title}}</h2>
+          </div>
+        </a>
+        <p class="tags">
+          Tags: {%for tag in recipe.tags.all%}
+          <a href="{%url 'blog:recipes_by_tag' tag.slug%}"> {{tag.name}} </a>
+          {%if not forloop.last%}, {%endif%} {%endfor%}
+        </p>
+        <br /><br />
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</section>
+{% endblock %}

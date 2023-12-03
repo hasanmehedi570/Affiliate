@@ -1,0 +1,309 @@
+{% extends "base.html" %} {%load static%} {% load blog_tags %} {%block title%}
+My Recipe{% endblock %} {% block content %}
+    <div id="wrapper" class="wrapper">
+        <!-- Inne Page Banner Area Start Here -->
+        <section class="inner-page-banner bg-common" data-bg-image="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumbs-area">
+                            <h1>Single Recipe</h1>
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li>Recipe Details</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Inne Page Banner Area End Here -->
+        <!-- Single Recipe With Sidebar Area Start Here -->
+        <section class="single-recipe-wrap-layout1 padding-top-74 padding-bottom-50">
+            <div class="container">
+                <div class="row gutters-60">
+                    <div class="col-lg-8">
+                        <div class="single-recipe-layout1">
+                            <div class="ctg-name">{{recipe.category}}</div>
+                            <h2 class="item-title">{{recipe.title}}</h2>
+                            <div class="row mb-4">
+                                <div class="col-xl-9 col-12">
+                                    <ul class="entry-meta">
+                                        <li class="single-meta"><i class="far fa-calendar-alt"></i>{{recipe.created_at}}</li>
+                                        <li class="single-meta"><i class="fas fa-user"></i>by <span>{{recipe.author}}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xl-3 col-12">
+                                    <ul class="action-item">
+                                        <li><button><i class="fas fa-print"></i></button></li>
+                                        <li><button><i class="fas fa-expand-arrows-alt"></i></button></li>
+                                        <li class="action-share-hover"><button><i class="fas fa-share-alt"></i></button>
+                                            <div class="action-share-wrap">
+                                                <a href="#" title="facebook"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#" title="twitter"><i class="fab fa-twitter"></i></a>
+                                                <a href="#" title="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#" title="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                                <a href="#" title="skype"><i class="fab fa-skype"></i></a>
+                                                <a href="#" title="rss"><i class="fas fa-rss"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item-figure">
+                                <img src="{{recipe.image.url}}" alt="Product">
+                            </div>
+                            <div class="item-feature">
+                                <ul>
+                                    <li>
+                                        <div class="feature-wrap">
+                                            <div class="media">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-utensils"></i>
+                                                </div>
+                                                <div class="media-body space-sm">
+                                                    <div class="feature-title">COOK TIME</div>
+                                                    <div class="feature-sub-title">{{recipe.duration}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="feature-wrap">
+                                            <div class="media">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-users"></i>
+                                                </div>
+                                                <div class="media-body space-sm">
+                                                    <div class="feature-title">SERVING</div>
+                                                    <div class="feature-sub-title">{{recipe.serve}} People</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="feature-wrap">
+                                            <div class="media">
+                                                <div class="feature-icon">
+                                                    <i class="far fa-eye"></i>
+                                                </div>
+                                                <div class="media-body space-sm">
+                                                    <div class="feature-title">VIEWS</div>
+                                                    <div class="feature-sub-title">{{recipe.views}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="item-description">{{recipe.description|markdown}}</p>
+                            <p class="item-description">{{recipe.instructions}}</p>
+                            <div class="making-elements-wrap">
+                                <div class="row">
+                                    <div class="col-xl-6 col-12">
+                                        <div class="ingridients-wrap">
+                                            <h3 class="item-title"><i class="fas fa-list-ul"></i>Ingridients</h3>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox1" type="checkbox">
+                                                <label for="checkbox1">{{recipe.ingredients}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-12">
+                                        <div class="nutrition-wrap">
+                                            <h3 class="item-title"><i class="fas fa-info"></i>Nutrition</h3>
+                                            <ul class="nutrition-list">
+                                                <li>
+                                                    <div class="nutrition-name">Calories</div>
+                                                    <div class="nutrition-value">329</div>
+                                                </li>
+                                                <li>
+                                                    <div class="nutrition-name">Sugar</div>
+                                                    <div class="nutrition-value">10.5g</div>
+                                                </li>
+                                                <li>
+                                                    <div class="nutrition-name">Protein</div>
+                                                    <div class="nutrition-value">22.5g</div>
+                                                </li>
+                                                <li>
+                                                    <div class="nutrition-name">Fat</div>
+                                                    <div class="nutrition-value">02g</div>
+                                                </li>
+                                                <li>
+                                                    <div class="nutrition-name">Carbs</div>
+                                                    <div class="nutrition-value">18g</div>
+                                                </li>
+                                                <li>
+                                                    <div class="nutrition-name">Food Fat</div>
+                                                    <div class="nutrition-value">0.1</div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="direction-wrap-layout1">
+                                <div class="section-heading heading-dark">
+                                    <h2 class="item-heading">DIRECTIONS</h2>
+                                </div>
+                                <p class="section-paragraph">{{recipe.directions}}</p>
+                                <div class="direction-box-layout1">
+                                    <div class="item-content">
+                                        <div class="serial-number">01 Step</div>
+                                        <p>{{recipe.step1}}</p>
+                                    </div>
+                                </div>
+                                <div class="direction-box-layout1">
+                                    <div class="item-content">
+                                        <div class="serial-number">02 Step</div>
+                                        <p>{{recipe.step2}}</p>
+                                    </div>
+                                </div>
+                                <div class="direction-box-layout1">
+                                    <div class="item-content">
+                                        <div class="serial-number">03 Step</div>
+                                        <p>{{recipe.step3}}</p>
+                                    </div>
+                                </div>
+                                <div class="direction-box-layout1">
+                                    <div class="item-content">
+                                        <div class="serial-number">04 Step</div>
+                                        <p>{{recipe.step4}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tag-share">                                
+                                <ul>
+                                    {%for tag in tags%}
+                                    <li>                                        
+                                        <ul class="inner-tag">
+                                            <li>
+                                                <a href="{%url 'blog:recipes_by_tag' tag.slug%}">{{tag.name}}</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {%endfor%}
+                                </ul>                                
+                            </div>             
+                            <div class="leave-review">
+                                <div class="section-heading heading-dark">
+                                    <h2 class="item-heading">LEAVE A REVIEW</h2>
+                                </div>
+                                {%for comment in recomments%}
+                                <p class="info">
+                                  Comment {{forloop.counter}} by {{comment.name}} {{comment.created}}
+                                </p>
+                                {%empty%}
+                                <p>There are no comments.</p>
+                                {%endfor%}
+                        
+                                <div class="pt-5 comment-wrap">
+                                  {%with recomments.count as total_comments%}
+                                  <h3 class="mb-5 heading">
+                                    {{total_comments}} comment{{total_comments|pluralize}}
+                                  </h3>
+                                  {%endwith%} {%for comment in recomments%}
+                                  <div class="comment">
+                                    <p class="info">
+                                      Comment {{forloop.counter}} by {{comment.name}}
+                                      {{comment.created}}
+                                    </p>
+                                    {{comment.body|linebreaks}}
+                                  </div>
+                                  {%empty%}
+                                  <p>There are no comments.</p>
+                                  {%endfor%} {%include 'recipes/comment_form_recipe.html'%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
+                        <div class="widget">
+                            <div class="section-heading heading-dark">
+                                <h3 class="item-heading">LATEST RECIPES</h3>
+                            </div>
+                            <div class="widget-latest">
+                                <ul class="block-list">
+                                    {%for recipe in latest_recipes%}
+                                    <li class="single-item">
+                                        <div class="item-img">
+                                            <a href="{{recipe.get_absolute_url}}"><img src="{{recipe.image.url}}" alt="Post"></a>
+                                            <div class="count-number">1</div>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="item-ctg">DESERT</div>
+                                            <h4 class="item-title"><a href="{{recipe.get_absolute_url}}">{{recipe.title}}</a></h4>
+                                            <div class="item-post-by"><i class="fas fa-user"></i><span>by</span>
+                                                    {{recipe.author}}</a></div>
+                                        </div>
+                                    </li>
+                                    {%endfor%}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-ad">
+                                <a href="#"><img src="img/figure/figure4.jpg" alt="Ad" class="img-fluid"></a>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="section-heading heading-dark">
+                                <h3 class="item-heading">FEATURED ARTICLE</h3>
+                            </div>
+                            <div class="widget-featured-feed">
+                                <div class="rc-carousel nav-control-layout1" data-loop="true" data-items="3"
+                                    data-margin="5" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="700"
+                                    data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1"
+                                    data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="1"
+                                    data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="1"
+                                    data-r-small-nav="true" data-r-small-dots="false" data-r-medium="1"
+                                    data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="1"
+                                    data-r-large-nav="true" data-r-large-dots="false" data-r-extra-large="1"
+                                    data-r-extra-large-nav="true" data-r-extra-large-dots="false">\
+                                    {%for recipe in recipes%}
+                                        {%if recipe.featured%}
+                                    <div class="featured-box-layout1">
+                                        <div class="item-img">
+                                            <a href="{{recipe.get_absolute_url}}">
+                                                <img src="{{recipe.image.url}}" alt="Brand" class="img-fluid">
+                                            </a> 
+                                        </div>
+                                        <div class="item-content">
+                                            <span class="ctg-name">{{recipe.category}}</span>
+                                            <h4 class="item-title"><a href="{{recipe.get_absolute_url}}">{{recipe.title}}</a></h4>
+                                            <p>Definitiones noel ei verear intelle
+                                                gatpri civibus consequat area
+                                                refund efficiantue.</p>
+                                        </div>
+                                    </div>
+                                        {%endif%}
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="section-heading heading-dark">
+                                <h3 class="item-heading">CATEGORIES</h3>
+                            </div>
+                            <div class="widget-categories">
+                                <ul>
+                                    {%for category in categories%}
+                                    <li>
+                                        <a href="{{category.get_absolute_url}}">{{category.name}}
+                                            <span>{{category.products_count}}</span>
+                                        </a>
+                                    </li>
+                                    {%endfor%}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Single Recipe With Sidebar Area End Here -->
+    </div>
+    {%endblock%}

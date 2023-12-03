@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {%load static%} {%block title%} Add a comment
+{%endblock%} {%block content%}
+<h2>Comments</h2>
+{%if comment%}
+<h2>Your comment has been added.</h2>
+<p>
+  <a href="{{post.get_absolute_url}}"> Back to the post </a>
+</p>
+{%else%} {%include 'comment_form.html'%} {%endif%} {%endblock%}

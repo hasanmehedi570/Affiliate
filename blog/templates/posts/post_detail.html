@@ -1,0 +1,217 @@
+{% extends "base.html" %} {%load static%} {%load blog_tags%} {%block title%}
+Post Details{% endblock %} {% block content %}
+<div class="site-mobile-menu site-navbar-target">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close">
+      <span class="icofont-close js-menu-toggle"></span>
+    </div>
+  </div>
+  <div class="site-mobile-menu-body"></div>
+</div>
+
+<div
+  class="site-cover site-cover-sm same-height overlay single-page"
+  style="background-image: url('{{post.image.url}}')"
+>
+  <div class="container">
+    <div class="row same-height justify-content-center">
+      <div class="col-md-6">
+        <div class="post-entry text-center">
+          <h1 class="mb-4">{{post.title}}</h1>
+          <div class="post-meta align-items-center text-center">
+            <figure class="author-figure mb-0 me-3 d-inline-block">
+              <img src="{{post.image.url}}" alt="Image" class="img-fluid" />
+            </figure>
+            <span class="d-inline-block mt-1">{{post.author}}</span>
+            <span>&nbsp;-&nbsp; {{post.publish}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="row blog-entries element-animate">
+      <div class="col-md-12 col-lg-8 main-content">
+        <div class="post-content-body">
+          <p>{{post.body|markdown}}</p>
+          <div class="row my-4">
+            <div class="col-md-12 mb-4">
+              <img
+                src="{{post.image.url}}"
+                alt="Image placeholder"
+                class="img-fluid rounded"
+              />
+            </div>
+            <div class="col-md-6 mb-4">
+              <img
+                src="{{post.image2.url}}"
+                alt="Image placeholder"
+                class="img-fluid rounded"
+              />
+            </div>
+            <div class="col-md-6 mb-4">
+              <a href="{%url 'blog:product_list'%}" class="image-link">
+                <img
+                  src="{{post.image3.url}}"
+                  alt="Image placeholder"
+                  class="img-fluid rounded"
+                />
+              </a>
+            </div>
+          </div>
+          <p>
+            Quibusdam autem, quas molestias recusandae aperiam molestiae modi
+            qui ipsam vel. Placeat tenetur veritatis tempore quos impedit dicta,
+            error autem, quae sint inventore ipsa quidem. Quo voluptate quisquam
+            reiciendis, minus, animi minima eum officia doloremque repellat eos,
+            odio doloribus cum.
+          </p>
+          <p>
+            Temporibus quo dolore veritatis doloribus delectus dolores
+            perspiciatis recusandae ducimus, nisi quod, incidunt ut quaerat,
+            magnam cupiditate. Aut, laboriosam magnam, nobis dolore fugiat
+            impedit necessitatibus nisi cupiditate, quas repellat itaque
+            molestias sit libero voluptas eveniet omnis illo ullam dolorem
+            minima.
+          </p>
+          <p>
+            Porro amet accusantium libero fugit totam, deserunt ipsa, dolorem,
+            vero expedita illo similique saepe nisi deleniti. Cumque,
+            laboriosam, porro! Facilis voluptatem sequi nulla quidem, provident
+            eius quos pariatur maxime sapiente illo nostrum quibusdam aliquid
+            fugiat! Earum quod fuga id officia.
+          </p>
+          <p>
+            Illo magnam at dolore ad enim fugiat ut maxime facilis autem, nulla
+            cumque quis commodi eos nisi unde soluta, ipsa eius aspernatur sint
+            atque! Nihil, eveniet illo ea, mollitia fuga accusamus dolor dolorem
+            perspiciatis rerum hic, consectetur error rem aspernatur!
+          </p>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus
+            magni explicabo id molestiae, minima quas assumenda consectetur,
+            nobis neque rem, incidunt quam tempore perferendis provident
+            obcaecati sapiente, animi vel expedita omnis quae ipsa! Obcaecati
+            eligendi sed odio labore vero reiciendis facere accusamus molestias
+            eaque impedit, consequuntur quae fuga vitae fugit?
+          </p>
+        </div>
+
+        {%for comment in comments%}
+        <p class="info">
+          Comment {{forloop.counter}} by {{comment.name}} {{comment.created}}
+        </p>
+        {%empty%}
+        <p>There are no comments.</p>
+        {%endfor%}
+
+        <div class="pt-5 comment-wrap">
+          {%with comments.count as total_comments%}
+          <h3 class="mb-5 heading">
+            {{total_comments}} comment{{total_comments|pluralize}}
+          </h3>
+          {%endwith%} {%for comment in comments%}
+          <div class="comment">
+            <p class="info">
+              Comment {{forloop.counter}} by {{comment.name}}
+              {{comment.created}}
+            </p>
+            {{comment.body|linebreaks}}
+          </div>
+          {%empty%}
+          <p>There are no comments.</p>
+          {%endfor%} {%include 'posts/comment_form.html'%}
+        </div>
+      </div>
+
+      <!-- END main-content -->
+
+      <div class="col-md-12 col-lg-4 sidebar">
+        <!-- END sidebar-box -->
+        <!-- END sidebar-box -->
+        <div class="sidebar-box">
+          <h3 class="heading">Popular Posts</h3>
+          <div class="post-entry-sidebar">
+            <ul>
+              {%for post in posts%} {%if post.featured%}
+              <li>
+                <a href="">
+                  <img
+                    src="{{post.image.url}}"
+                    alt="Image placeholder"
+                    class="me-4 rounded"
+                  />
+                  <div class="text">
+                    <h4>{{post.title}}</h4>
+                    <div class="post-meta">
+                      <span class="mr-2">{{post.updated}} </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              {%endif%} {%endfor%}
+            </ul>
+          </div>
+        </div>
+        <!-- END sidebar-box -->
+
+        <div class="sidebar-box">
+          <h3 class="heading">Categories</h3>
+          <ul class="categories">
+            {%for category in categories%}
+            <li>
+              <a href="{{category.get_absolute_url}}"
+                >{{category.name}} <span>(12)</span></a
+              >
+            </li>
+            {%endfor%}
+          </ul>
+        </div>
+        <!-- END sidebar-box -->
+
+        <div class="sidebar-box">
+          <h3 class="heading">Tags</h3>
+          <ul class="tags">
+            {%for tag in post.tags.all%}
+            <li>
+              <a href="{% url 'blog:blog_view_by_tag' tag.slug %}"
+                >{{tag.name}}</a
+              >
+            </li>
+            {%endfor%}
+          </ul>
+        </div>
+      </div>
+      <!-- END sidebar -->
+    </div>
+  </div>
+</section>
+
+<!-- Start posts-entry -->
+<section class="section posts-entry posts-entry-sm bg-light">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-12 text-uppercase text-black">More Blog Posts</div>
+    </div>
+    <div class="row">
+      {%for post in posts%}
+      <div class="col-md-6 col-lg-3">
+        <div class="blog-entry">
+          <a href="{{post.get_absolute_url}}" class="img-link">
+            <img src="{{post.image.url}}" alt="Image" class="img-fluid" />
+          </a>
+          <span class="date">{{post.publish}}</span>
+          <h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p><a href="#" class="read-more">Continue Reading</a></p>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</section>
+{%endblock%}
